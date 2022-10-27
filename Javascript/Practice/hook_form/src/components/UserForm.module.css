@@ -1,0 +1,5 @@
+.formInfo {
+    display: flex;
+    justify-content: around;
+    align-items: center; 
+}
