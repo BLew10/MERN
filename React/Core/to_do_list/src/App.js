@@ -11,15 +11,17 @@ function App() {
     setToDos([item, ...toDos])
   }
 
-  const deleteItem = (targetItem) => {
-    setToDos(toDos.filter((item, i) => i !== targetItem))
+  const deleteItem = (targetItemIndex) => {
+    setToDos(toDos.filter((item, i) => i !== targetItemIndex))
   }
+
+
   const toggle = (idx) => {
     setToDos(toDos.map((item, i) => {
       if (i === idx) {
         item.isComplete = !item.isComplete
       }
-
+      
       return item
     }))
   }
