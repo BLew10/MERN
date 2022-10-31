@@ -36,17 +36,17 @@ const ProductForm =  (props) => {
             <h1>Product Manager</h1>
             <p>
                 <label>Title: </label><br/>
-                <input type="text" onChange={(e)=>changeHandler(e)} value={product.title} name="title"/>
+                <input className='border-2 border-slate-300 rounded' type="text" onChange={(e)=>changeHandler(e)} value={product.title} name="title"/>
             </p>
             <p>
                 <label>Price: </label><br/>
-                <input type="number" onChange={(e)=>changeHandler(e)}  value={product.price} name="price"/>
+                <input className='border-2 border-slate-300 rounded' type="number" onChange={(e)=>changeHandler(e)}  value={product.price} name="price"/>
             </p>
             <p>
                 <label>Description: </label><br/>
-                <input type="text" onChange={(e)=>changeHandler(e)} value={product.description} name="description"/>
+                <input className='border-2 border-slate-300 rounded' type="text" onChange={(e)=>changeHandler(e)} value={product.description} name="description"/>
             </p>
-            <input type="submit"/>
+            <input className='p-1 bg-slate-300 rounded' type="submit"/>
         </form>
     )
 }

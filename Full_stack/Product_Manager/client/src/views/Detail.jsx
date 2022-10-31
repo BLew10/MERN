@@ -1,11 +1,25 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios"
 import { useParams } from 'react-router-dom'
+import {
+    Routes,
+    Route,
+    Link,
+    useNavigate
+} from "react-router-dom"
 
 const Detail = (props) => {
     const [product, setProduct] = useState({})
     const { id } = useParams()
-    console.log(id)
+    const navigate = useNavigate()
+    
+    const deleteProduct = (id) => {
+        axios.delete(`http://localhost:8000/api/products/${id}`)
+            .then(res => {console.log(res)})
+            .catch(err => console.error(err));
+        navigate('/products')
+        
+    }
     useEffect(() => {
         axios.get(`http://localhost:8000/api/products/${id}`)
             .then(res => {
@@ -20,7 +34,11 @@ const Detail = (props) => {
             <div>Details about {product.title}</div>
             <p>Price: {product.price}</p>
             <p>Description: {product.description}</p>
-            <a href="/products">Back to All Products</a>
+            <div>
+            <Link to ={`/products/${id}/edit`}>Edit</Link>
+            <button onClick ={()=>deleteProduct(id)}>Delete</button>
+            <Link to ={"/products"}>Back to All Produts</Link>
+            </div>
         </div>
     )
 }

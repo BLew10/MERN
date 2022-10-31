@@ -20,6 +20,10 @@ const Main = (props) => {
         console.log(loaded)
     }, [loaded])
 
+    const removeFromDom = productId => {
+        setProducts(products.filter(product => product._id !== productId));
+    }
+
     const newProduct = () => {
         setLoaded(false)
     }
@@ -28,7 +32,7 @@ const Main = (props) => {
         <div>
             <ProductForm newProduct = {newProduct}/>
             <hr/>
-                { loaded && <ProductList products = {products}/> } 
+                { loaded && <ProductList products = {products} removeFromDom={removeFromDom}/> } 
         </div>
     )
 }
