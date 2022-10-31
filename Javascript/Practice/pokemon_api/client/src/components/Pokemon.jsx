@@ -8,7 +8,6 @@ const Pokemon = (props) => {
         axios.get('https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0')
         .then(res => {
             setPokemon(res.data.results)
-            console.log(pokemon)
         })
     }
 

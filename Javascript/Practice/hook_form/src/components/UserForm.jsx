@@ -3,15 +3,23 @@ import styles from './UserForm.module.css';
 
 const UserForm = props => {
 
-    const [firstName, setFirstName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-    const [confirmPassword, setConfirmPassword] = useState("")
+    const [inputs, setInputs] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        password:"",
+        confirmPassword: ""
+    })
+
 
     const createUser = (e) => {
-        const newUser = { firstName, lastName, email, password, confirmPassword }
+        e.preventDefault()
+        const newUser =  inputs 
         console.log("Welcome", newUser.firstName)
+    }
+
+    const handleChange = (e) => {
+        setInputs({...inputs, [e.target.name]: e.target.value })
     }
 
     return (
@@ -19,27 +27,23 @@ const UserForm = props => {
             <form onSubmit={createUser}>
                 <div>
                     <label>First Name: </label>
-
-                    <input type="text" onChange={(e) => setFirstName(e.target.value)} value={firstName} />
-
+                    <input type="text" onChange={(e) => handleChange(e)} value={inputs.firstName} name="firstName"/>
                 </div>
                 <div>
                     <label>Last Name: </label>
-
-                    <input type="text" onChange={(e) => setLastName(e.target.value)} value={lastName} />
-
+                    <input type="text" onChange={(e) => handleChange(e)} value={inputs.lastName}  name="lastName"/>
                 </div>
                 <div>
                     <label>Email Address: </label>
-                    <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} />
+                    <input type="text" onChange={(e) => handleChange(e)} value={inputs.email}  name="email"/>
                 </div>
                 <div>
                     <label>Password: </label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} />
+                    <input type="password" onChange={(e) => handleChange(e)} value={inputs.password} name="password"/>
                 </div>
                 <div>
                     <label> Confirm Password: </label>
-                    <input type="password" onChange={(e) => setConfirmPassword(e.target.value)} value={confirmPassword} />
+                    <input type="password" onChange={(e) => handleChange(e)} value={inputs.confirmPassword} name= "confirmPassword"/>
                 </div>
                 <input type="submit" value="Create User" />
             </form>
@@ -48,26 +52,26 @@ const UserForm = props => {
                 <div className= {styles.formInfo}>
                     <label>First Name: </label>
 
-                    <p> {firstName} </p>
+                    <p> {inputs.firstName} </p>
 
                 </div>
                 <div>
                     <label>Last Name: </label>
 
-                    <p>{lastName}</p>
+                    <p>{inputs.lastName}</p>
 
                 </div>
                 <div>
                     <label>Email Address: </label>
-                    <p>{email}</p>
+                    <p>{inputs.email}</p>
                 </div>
                 <div>
                     <label>Password: </label>
-                    <p> {password}</p>
+                    <p> {inputs.password}</p>
                 </div>
                 <div>
                     <label>Confirm Password: </label>
-                    <p> {confirmPassword}</p>
+                    <p> {inputs.confirmPassword}</p>
                 </div>
                 <input type="submit" value="Create User" />
             </div>
